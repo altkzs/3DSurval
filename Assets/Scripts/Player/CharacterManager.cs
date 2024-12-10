@@ -15,7 +15,7 @@ public class CharacterManager : MonoBehaviour
 		}
 	}
 	public Player _player;
-	public Player player
+	public Player Player
 	{
 		get { return _player; }
 		set { _player = value; }

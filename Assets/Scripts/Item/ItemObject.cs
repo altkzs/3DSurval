@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public interface IInteractable
@@ -19,8 +17,8 @@ public class ItemObject : MonoBehaviour, IInteractable
 
 	public void OnInteract()
 	{
-		CharacterManager.Instance.player.itemData = data;
-		CharacterManager.Instance.player.addItem?.Invoke();
+		CharacterManager.Instance.Player.itemData = data;
+		CharacterManager.Instance.Player.addItem?.Invoke();
 		Destroy(gameObject);
 	}
 }

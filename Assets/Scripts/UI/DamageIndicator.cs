@@ -11,12 +11,12 @@ public class DamageIndicator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharacterManager.Instance.player.condition.onTakeDamage += Flash;
+        CharacterManager.Instance.Player.condition.onTakeDamage += Flash;
     }
-    
+
     public void Flash()
     {
-        if(coroutine != null)
+        if (coroutine != null)
         {
             StopCoroutine(coroutine);
         }
@@ -29,7 +29,7 @@ public class DamageIndicator : MonoBehaviour
         float startAlpha = 0.3f;
         float a = startAlpha;
 
-        while(a > 0)
+        while (a > 0)
         {
             a -= (startAlpha / flahSpeed) * Time.deltaTime;
             image.color = new Color(1f, 100f / 255f, 100f / 255f, a);

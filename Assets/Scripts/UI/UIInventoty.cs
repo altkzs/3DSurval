@@ -24,15 +24,16 @@ public class UIInventoty : MonoBehaviour
 
 	ItemData selectedItem;
 	int selectedItemIndex = 0;
+	int curEquipIndex;
 
 	void Start()
 	{
-		controller = CharacterManager.Instance.player.Controller;
-		condition = CharacterManager.Instance.player.condition;
-		dropPosition = CharacterManager.Instance.player.dropPosition;
+		controller = CharacterManager.Instance.Player.Controller;
+		condition = CharacterManager.Instance.Player.condition;
+		dropPosition = CharacterManager.Instance.Player.dropPosition;
 
 		controller.inventory += Toggle;
-		CharacterManager.Instance.player.addItem += AddItem;
+		CharacterManager.Instance.Player.addItem += AddItem;
 
 		inventotyWindow.SetActive(false);
 		slots = new ItemSlot[slotPanel.childCount];
@@ -81,7 +82,7 @@ public class UIInventoty : MonoBehaviour
 
 	void AddItem()
 	{
-		ItemData data = CharacterManager.Instance.player.itemData;
+		ItemData data = CharacterManager.Instance.Player.itemData;
 		//아이템이 중복 가능한지 canStack
 		if (data.canStack)
 		{
@@ -89,7 +90,7 @@ public class UIInventoty : MonoBehaviour
 			if (slot != null)
 			{
 				slot.quantity++;
-				CharacterManager.Instance.player.itemData = null;
+				CharacterManager.Instance.Player.itemData = null;
 				return;
 			}
 		}
@@ -103,14 +104,14 @@ public class UIInventoty : MonoBehaviour
 			emptySlot.item = data;
 			emptySlot.quantity = 1;
 			UpdateUI();
-			CharacterManager.Instance.player.itemData = null;
+			CharacterManager.Instance.Player.itemData = null;
 			return;
 		}
 
 		//없다면
 		ThrowItem(data);
 
-		CharacterManager.Instance.player.itemData = null;
+		CharacterManager.Instance.Player.itemData = null;
 	}
 	void UpdateUI()
 	{
@@ -209,5 +210,34 @@ public class UIInventoty : MonoBehaviour
 			ClearSelectedItemWindow();
 		}
 		UpdateUI();
+	}
+	public void OnEquipButton()
+	{
+		if (slots[curEquipIndex].equipped)
+		{
+			UnEquip(curEquipIndex);
+		}
+
+		slots[selectedItemIndex].equipped = true;
+		curEquipIndex = selectedItemIndex;
+		CharacterManager.Instance.Player.equip.EquipNew(selectedItem);
+		UpdateUI();
+
+		SelectItem(selectedItemIndex);
+	}
+	void UnEquip(int index)
+	{
+		slots[index].equipped = false;
+		CharacterManager.Instance.Player.equip.UnEquip();
+		UpdateUI();
+
+		if (selectedItemIndex == index)
+		{
+			SelectItem(selectedItemIndex);
+		}
+	}
+	public void OnUpEquipButton()
+	{
+		UnEquip(selectedItemIndex);
 	}
 }
