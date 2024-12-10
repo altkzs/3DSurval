@@ -6,7 +6,7 @@ public interface IDamagalbe
 	void TakePhysicalDamage(int damage);
 }
 
-public class PlayerCondition : MonoBehaviour, IDamagalbe 
+public class PlayerCondition : MonoBehaviour, IDamagalbe
 {
 	public UICondition uICondition;
 	Condition health { get { return uICondition.health; } }
@@ -44,9 +44,18 @@ public class PlayerCondition : MonoBehaviour, IDamagalbe
 		Debug.Log("죽었다!");
 	}
 
-    public void TakePhysicalDamage(int damage)
-    {
-        health.Subtract(damage);
+	public void TakePhysicalDamage(int damage)
+	{
+		health.Subtract(damage);
 		onTakeDamage?.Invoke();
-    }
+	}
+	public bool UseStamina(float amount)
+	{
+		if (stamina.curValue - amount < 0f)
+		{
+			return false;
+		}
+		stamina.Subtract(amount);
+		return true;
+	}
 }
