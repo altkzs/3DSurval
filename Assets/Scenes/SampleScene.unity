@@ -2160,6 +2160,7 @@ MonoBehaviour:
   slots: []
   inventotyWindow: {fileID: 969837388}
   slotPanel: {fileID: 1098395693}
+  dropPosition: {fileID: 0}
   selectedItemName: {fileID: 1231638360}
   selectedItemDescription: {fileID: 1500796218}
   selectedStatName: {fileID: 2110652098}
@@ -3142,7 +3143,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1265335519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 969837393}
+        m_TargetAssemblyTypeName: UIInventoty, Assembly-CSharp
+        m_MethodName: OnUseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1265335519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3344,7 +3357,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1316506215}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 969837393}
+        m_TargetAssemblyTypeName: UIInventoty, Assembly-CSharp
+        m_MethodName: OnDropButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1316506215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4742,6 +4767,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1613173731}
+  - {fileID: 2135608552}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1936102307
@@ -4831,6 +4857,7 @@ MonoBehaviour:
   Controller: {fileID: 0}
   condition: {fileID: 0}
   itemData: {fileID: 0}
+  dropPosition: {fileID: 2135608552}
 --- !u!114 &1936102311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4958,7 +4985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uICondition: {fileID: 0}
-  noHungerHealthDecay: 2
+  noHungerHealthDecay: 1
 --- !u!114 &1936102313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5812,6 +5839,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110652096}
   m_CullTransparentMesh: 1
+--- !u!1 &2135608551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2135608552}
+  m_Layer: 6
+  m_Name: dropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2135608552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135608551}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1936102306}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4216741747832139014
 PrefabInstance:
   m_ObjectHideFlags: 0
