@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+
 public class UIInventoty : MonoBehaviour
 {
 	public ItemSlot[] slots;
@@ -172,7 +173,7 @@ public class UIInventoty : MonoBehaviour
 
 		useButton.SetActive(selectedItem.type == ItemType.Consumable);
 		equipButton.SetActive(selectedItem.type == ItemType.Equipable && !slots[index].equipped);
-		unEquipButton.SetActive(selectedItem.type == ItemType.Equipable && !slots[index].equipped);
+		unEquipButton.SetActive(selectedItem.type == ItemType.Equipable && slots[index].equipped);
 		dropButton.SetActive(true);
 	}
 	public void OnUseButton()
@@ -236,7 +237,7 @@ public class UIInventoty : MonoBehaviour
 			SelectItem(selectedItemIndex);
 		}
 	}
-	public void OnUpEquipButton()
+	public void OnUnEquipButton()
 	{
 		UnEquip(selectedItemIndex);
 	}
